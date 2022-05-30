@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿#nullable disable
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shopping.Data;
 using Shopping.Data.Entities;
 
 namespace Shopping.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : Controller
     {
         private readonly DataContext _context;
@@ -43,9 +46,6 @@ namespace Shopping.Controllers
             return View();
         }
 
-        // POST: Countries/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Category category)
@@ -60,7 +60,6 @@ namespace Shopping.Controllers
                 }
                 catch (DbUpdateException dbUpdateException)
                 {
-#pragma warning disable CS8602 // Desreferencia de una referencia posiblemente NULL.
                     if (dbUpdateException.InnerException.Message.Contains("duplicate"))
                     {
                         ModelState.AddModelError(string.Empty, "Ya existe una categoría con el mismo nombre.");
@@ -69,7 +68,6 @@ namespace Shopping.Controllers
                     {
                         ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
                     }
-#pragma warning restore CS8602 // Desreferencia de una referencia posiblemente NULL.
                 }
                 catch (Exception exception)
                 {
@@ -85,10 +83,7 @@ namespace Shopping.Controllers
             {
                 return NotFound();
             }
-
-#pragma warning disable CS8600 // Se va a convertir un literal nulo o un posible valor nulo en un tipo que no acepta valores NULL
             Category category = await _context.Categories.FindAsync(id);
-#pragma warning restore CS8600 // Se va a convertir un literal nulo o un posible valor nulo en un tipo que no acepta valores NULL
             if (category == null)
             {
                 return NotFound();
@@ -96,9 +91,6 @@ namespace Shopping.Controllers
             return View(category);
         }
 
-        // POST: Countries/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Category category)
@@ -118,7 +110,6 @@ namespace Shopping.Controllers
                 }
                 catch (DbUpdateException dbUpdateException)
                 {
-#pragma warning disable CS8602 // Desreferencia de una referencia posiblemente NULL.
                     if (dbUpdateException.InnerException.Message.Contains("duplicate"))
                     {
                         ModelState.AddModelError(string.Empty, "Ya existe una categoría con el mismo nombre.");
@@ -127,7 +118,6 @@ namespace Shopping.Controllers
                     {
                         ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
                     }
-#pragma warning restore CS8602 // Desreferencia de una referencia posiblemente NULL.
                 }
                 catch (Exception exception)
                 {
@@ -144,11 +134,8 @@ namespace Shopping.Controllers
             {
                 return NotFound();
             }
-
-#pragma warning disable CS8600 // Se va a convertir un literal nulo o un posible valor nulo en un tipo que no acepta valores NULL
             Category category = await _context.Categories
                 .FirstOrDefaultAsync(m => m.Id == id);
-#pragma warning restore CS8600 // Se va a convertir un literal nulo o un posible valor nulo en un tipo que no acepta valores NULL
             if (category == null)
             {
                 return NotFound();
@@ -157,7 +144,6 @@ namespace Shopping.Controllers
             return View(category);
         }
 
-        // POST: Countries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
