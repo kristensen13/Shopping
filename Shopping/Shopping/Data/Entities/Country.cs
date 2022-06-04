@@ -13,7 +13,7 @@ namespace Shopping.Data.Entities
 
         public ICollection<State> States { get; set; }
 
-        [Display(Name = "Comunidad/Provincia")]
+        [Display(Name = "Comunidad / Provincia")]
         public int StatesNumber => States == null ? 0 : States.Count;
     }
 }

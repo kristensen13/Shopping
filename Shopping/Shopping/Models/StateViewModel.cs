@@ -6,7 +6,7 @@ namespace Shopping.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Comunidad/Provincia")]
+        [Display(Name = "Comunidad / Provincia")]
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Name { get; set; }
