@@ -1,4 +1,4 @@
-﻿@{
+﻿@*@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,4 +6,93 @@
     <h1 class="display-2">Wilson Loayza Coello</h1>
     <h2 class="display-4">Proyecto Shopping con .Net C#</h2>
     <p>Visita <a href="https://portafolio.wilson-loayza.es/">mi web y descubre más acerca de mis proyectos</a>.</p>
-</div>
+</div>*@
+
+
+@model IEnumerable<Shopping.Models.ProductsHomeViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        @if (item.Product1 != null)
+        {
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card_title">@item.Product1.Name</div>
+                    <div class="card_body">
+                        <img src="@item.Product1.ImageFullPath" style="height:150px; max-width:280px;" />
+                        <p class="mt-2">
+                            @item.Product1.Description
+                            <h4>@Html.DisplayFor(modelItem => item.Product1.Price)</h4>
+                        </p>
+                    </div>
+                    <div class="card_foot">
+                        <a asp-action="Details" asp-route-id="@item.Product1.Id" class="btn btn-secondary">Detalles</a>
+                        <a asp-action="Add" asp-route-id="@item.Product1.Id" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (item.Product2 != null)
+        {
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card_title">@item.Product2.Name</div>
+                    <div class="card_body">
+                        <img src="@item.Product2.ImageFullPath" style="height:150px; max-width:280px;" />
+                        <p class="mt-2">
+                            @item.Product2.Description
+                            <h4>@Html.DisplayFor(modelItem => item.Product2.Price)</h4>
+                        </p>
+                    </div>
+                    <div class="card_foot">
+                        <a asp-action="Details" asp-route-id="@item.Product1.Id" class="btn btn-secondary">Detalles</a>
+                        <a asp-action="Add" asp-route-id="@item.Product1.Id" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (item.Product3 != null)
+        {
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card_title">@item.Product3.Name</div>
+                    <div class="card_body">
+                        <img src="@item.Product3.ImageFullPath" style="height:150px; max-width:280px;" />
+                        <p class="mt-2">
+                            @item.Product3.Description
+                            <h4>@Html.DisplayFor(modelItem => item.Product3.Price)</h4>
+                        </p>
+                    </div>
+                    <div class="card_foot">
+                        <a asp-action="Details" asp-route-id="@item.Product1.Id" class="btn btn-secondary">Detalles</a>
+                        <a asp-action="Add" asp-route-id="@item.Product1.Id" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (item.Product4 != null)
+        {
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card_title">@item.Product4.Name</div>
+                    <div class="card_body">
+                        <img src="@item.Product4.ImageFullPath" style="height:150px; max-width:280px;" />
+                        <p class="mt-2">
+                            @item.Product4.Description
+                            <h4>@Html.DisplayFor(modelItem => item.Product4.Price)</h4>
+                        </p>
+                    </div>
+                    <div class="card_foot">
+                        <a asp-action="Details" asp-route-id="@item.Product1.Id" class="btn btn-secondary">Detalles</a>
+                        <a asp-action="Add" asp-route-id="@item.Product1.Id" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

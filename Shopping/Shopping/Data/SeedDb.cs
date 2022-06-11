@@ -35,7 +35,7 @@ namespace Shopping.Data
         {
             if (!_context.Products.Any())
             {
-                await AddProductAsync("Adidas Barracuda", 80M, 12F, new List<string>() { "Calzado", "Deportes" }, new List<string>() { "adridas_dragon.jpg" });
+                await AddProductAsync("Adidas Dragon", 80M, 12F, new List<string>() { "Calzado", "Deportes" }, new List<string>() { "adridas_dragon.jpg" });
                 await AddProductAsync("Adidas Superstar", 100M, 12F, new List<string>() { "Calzado", "Deportes" }, new List<string>() { "adidas_superstar.webp" });
                 await AddProductAsync("AirPods", 130M, 12F, new List<string>() { "Tecnología", "Apple" }, new List<string>() { "airpods.png", "airpods2.png" });
                 await AddProductAsync("Auriculares Bose", 87M, 12F, new List<string>() { "Tecnología" }, new List<string>() { "auriculares_bose.png" });
