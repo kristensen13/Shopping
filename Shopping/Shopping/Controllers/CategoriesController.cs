@@ -30,23 +30,6 @@ namespace Shopping.Controllers
                         .ToListAsync()) :
                         Problem("Entity set 'DataContext.Categories'  is null.");
         }
-
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Categories == null)
-            {
-                return NotFound();
-            }
-
-            var category = await _context.Categories
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return View(category);
-        }      
         
 
         [NoDirectAccess]

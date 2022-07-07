@@ -40,20 +40,25 @@
             @*<span>@item.Name&nbsp;&nbsp;</span>*@
 
             <li class="nav-item">
-                <a class="nav-link text-dark" aria-current="page" href="#">@item.Name&nbsp;&nbsp;</a>
+                <a class="nav-link text-dark" aria-current="page" href="@Url.Action("Index", "Home", new { searchString = item.Name})">@item.Name&nbsp;&nbsp;</a>
             </li>
-
         }
     </ul>
 </div>
 
 <div class="mt-4 mb-2">
-    <button type="button" class="btn btn-primary btn-sm position-relative">
+    <span class="badge rounded-pill bg-success">
+         <a class="text-dark" style="text-decoration:none;" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Ordenar por Nombre</a>
+    </span>
+    @*<button type="button" class="btn btn-primary btn-sm position-relative">
         <a class="text-white" style="text-decoration:none;" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Ordenar por Nombre</a>        
-    </button>
-    <button type="button" class="btn btn-primary btn-sm position-relative">
+    </button>*@
+    <span class="badge rounded-pill bg-success">
+         <a class="text-dark" style="text-decoration:none;" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]">Ordenar por Precio</a>
+    </span>
+   @* <button type="button" class="btn btn-primary btn-sm position-relative">
         <a class="text-white" style="text-decoration:none;" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]">Ordenar por Precio</a>      
-    </button>
+    </button>*@
     @*<a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Ordenar por Nombre</a>&nbsp;&nbsp;
     <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]">Ordenar por Precio</a>*@
 </div>
